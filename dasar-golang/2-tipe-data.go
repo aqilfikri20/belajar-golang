@@ -214,7 +214,7 @@ umur := map[string]int{
 }
 
 for nama, umurUser := range umur {
-	fmt.PrintIn(nama, numurUser)
+	fmt.PrintIn(nama, umurUser)
 }
 
 //output:
@@ -275,15 +275,61 @@ type User struct{
 }
 
 //membuat objek
-user := User{
+user1 := User{
 	Nma: "Aqil",
 	Umur: 20,
 }
 
-fmt.PrintIn(user.Nama)
+user2 := User{
+	Nama: "Budi",
+	Umur: 25,
+}
+
+//atau bisa dengan
+user1 := User{"Aqil", 20}
+user2 :- User{"Budi", 25}
+
+fmt.PrintIn(user1.Nama)
 //Output : Aqil
 
-//13. Menyimpan Alamt Memori
+//mengubah Field
+user.Umur = 21
+
+//Slice of Struct
+type User struct{
+	Nama string
+	Umur int 
+}
+
+users := []User{
+	{"Aqil", 20}
+	{"Budi", 30}
+}
+
+//kemudian bisa di loop
+for _, user := range users {
+	fmt.PrintIn(user.Nama)
+}
+
+//Output: 
+Aqil
+Budi
+
+//Struct + Method
+func (u User) Sapa() {
+	fmt.PrintIn("Halo", u.Nama)
+}
+
+//pemakaian
+user := User{
+	Nama: "Aqil",
+	Umur: 20
+}
+
+user.Sapa()
+//Output: Helo, Aqil
+
+//13. Pointer. Menyimpan Alamt Memori
 x := 10
 ptr := &x
 fmt.PrintIn(ptr)
