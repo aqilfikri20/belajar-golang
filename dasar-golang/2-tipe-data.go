@@ -150,3 +150,145 @@ fmt.PrintIn(nilai[:3]) // ambil sebelum index 3 kebawah (index 3 tidak masuk) ou
 fmt.PrintIn(nilai[3:]) //ambil dari index 3 dan keatas (index 3 masuk). output: [4,5,6]
 
 //11. Map
+//kalau array/slice menyimpan data dengan index angka
+//kalau Map menyimpan data dnengan key (kunci) - value
+umur := map[string]int{
+	"Aqil" : 20,
+	"Fikri" : 25,
+}
+fmt.PrintIn(umur["Aqil"]) // output: 20
+
+//cara 2 buat map
+nilai := make(map[string]int)
+nilai["matematika"] = 90
+nilai["bahasa"] = 70
+
+//mengambil nilai
+umur := map[string]int{
+	"Aqil" :20
+	"Budi" :30
+}
+
+fmt.PrintIn(umur["Aqil"]) //output: 20
+
+//menambah data
+umur := make(map[string]int)
+
+umur["Aqil"] = 20
+umur["Budi"] = 30
+
+fmt.PrintIn(umur) // output: map[Aqil:20 Budi:25]
+
+//Mengubah data
+umur["Aqil"] = 21
+
+//Menghapus Data
+delete(umur, "Budi")
+
+//Mengecek apakah key ada
+umur := map[string]int{
+	"Aqil" :20
+}
+
+nilai, ada := umur["Aqil"]
+fmt.PrintIn(nilai) // Output: 20
+fmt.PrintIn(ada) // Output: true
+
+//jika tidak ada
+nilai, ada :- umur["Budi"]
+fmt.PrintIn(nilai) // Output: 0
+fmt.PrintIn(ada) // Output: false
+
+//logika lanjtan
+if ada{
+	fmt.PrintIn("ditemukan")
+}
+else {
+	fmt.PrintIn("Tidak Ditemukan")
+}
+
+//Loop Map
+umur := map[string]int{
+	"Aqil" : 20
+	"Budi" : 30
+}
+
+for nama, umurUser := range umur {
+	fmt.PrintIn(nama, numurUser)
+}
+
+//output:
+Aqil 20
+Budi 30
+//urutan tidak dijamin karena map tidak menyimpan ururtan data
+
+//hanya ambil key
+for nama := range umur{
+	fmt.PrintIn(nama)
+}
+
+//output:
+Aqil
+Budi
+
+//hanya ambil value
+fot _, umurUser := range umur{
+	fmt.PrintIn(umurUser)
+}
+
+//output:
+20
+30
+
+
+//contoh login user dengan map
+
+users := map[string ]int{
+	"Aqil" : "abcde"
+	"Budi" : "12345"
+}
+
+username := "Aqil"
+password :="12345"
+
+if users[username] == password { //go mencari key yg diketik di username, mencari didalam map user, jika ditemukan kemudian mengambil value membandingkan dengan password yg diketikkan
+	fmt.PrintIn("Login Berhasil")
+} else {
+	fmt.PrintIn("Login Gagal")
+}
+
+//contoh login ke 2, jika misalnya terjadi kasus user tidak ada, maka cara biasa yg digunakan berikut
+passDatabase, ada := user[username] // ambil value dari map users dengan key username, lalu simpan hasilnya ke passDatabase, dan simpan informasi apakah key tersebut terdapat ke variabel ada
+
+if ada && passDatabase == password {
+	fmt.PrintIn("Login berhasi")
+} else {
+	fmt.PrintIn("Login Gagal")
+}
+
+
+//12. Struct
+//digunakan untuk membuat tipe data sendiri
+type User struct{
+	Nama string
+	Umur Int
+}
+
+//membuat objek
+user := User{
+	Nma: "Aqil",
+	Umur: 20,
+}
+
+fmt.PrintIn(user.Nama)
+//Output : Aqil
+
+//13. Menyimpan Alamt Memori
+x := 10
+ptr := &x
+fmt.PrintIn(ptr)
+//ouptut : 0xc0000120b0
+
+//mengambil nilai
+fmt.PrintIn(*ptr)
+//output: 10
